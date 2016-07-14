@@ -14,8 +14,14 @@ if [ "$(uname)" = "Darwin" ]; then
         echo "No X11 libs found. Exiting..." 1>&2
         exit
     fi
+
+    conf_file=config/Darwin_Intel
+elif [ "$(uname)" = "Linux" ]; then
+    conf_file=config/LINUX
 fi
-     
+
+# add "-std=c99" to compile config files -- not needed after NCL 6.3.0
+sed -e "s/^\(#define CcOptions.*\)$/\1 -std=c99/" -i.backup "${conf_file}"
 
 echo "/*
  *  This file was created by the Configure script.
