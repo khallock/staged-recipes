@@ -42,6 +42,9 @@ echo "/*
 
 #define BuildGDAL 1
 
+#define HDF5lib -lhdf5_hl -lhdf5 -lz
+#define NetCDF4lib  -lhdf5_hl -lhdf5
+
 #endif /* SecondSite */" > config/Site.local
 
 echo -e "n\n" | ./Configure
