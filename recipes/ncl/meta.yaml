@@ -1,0 +1,72 @@
+# Jinja variables help maintain the recipe as you'll update the version only here.
+{% set version = "6.3.0" %}
+
+package:
+    name: ncl
+    version: {{ version }}
+
+source:
+    fn: ncl_ncarg-{{ version }}.tar.gz
+    url: https://www.earthsystemgrid.org/download/fileDownload.html?logicalFileId=bec58cb3-cd9b-11e4-bb80-00c0f03d5b7c
+    # md5 is OK but sha256 is desirable.
+    sha256: 79a01d1c51537426a1a657bb78c8f32453d071c774ec21495800d90d3688b2f3
+
+build:
+    number: 0
+    skip: True  # [win or linux32]
+
+requirements:
+    build:
+        - libpng
+        - jasper
+        - jpeg
+        - zlib
+        - hdf4
+        - hdf5
+        - gcc
+        - libnetcdf 4.4.*
+        - proj.4
+        - hdfeos2
+        - g2clib
+        - gdal 1.11.4
+        - libiconv
+        - hdfeos5
+        - curl
+        - cairo [linux]
+        - udunits2
+        - bzip2
+    run:
+        - libgcc
+        - libpng
+        - jasper
+        - jpeg
+        - zlib
+        - libnetcdf 4.4.*
+        - hdf5
+        - hdf4
+        - proj.4
+        - hdfeos2
+        - g2clib
+        - gdal 1.11.4
+        - libiconv
+        - hdfeos5
+        - curl
+        - cairo [linux]
+        - udunits2
+        - bzip2
+
+
+test:
+    commands:
+        - ncl -V
+        - NCARG_ROOT=${PREFIX} ${SRC_DIR}/install/make-tarfile/check_files | grep '^<' | grep -v '^< bin/ESMF_RegridWeightGen' && exit 1 || exit 0
+
+
+about:
+    home: http://ncl.ucar.edu
+    # license: MIT
+    summary: 'NCAR Command Language'
+
+extra:
+    recipe-maintainers:
+        - khallock
