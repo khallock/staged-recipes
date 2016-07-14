@@ -20,6 +20,8 @@ elif [ "$(uname)" = "Linux" ]; then
     conf_file=config/LINUX
 fi
 
+cd ni/src/lib/hlu && curl -q http://localhost:8000/triangle.shar | sh && cd -
+
 # add "-std=c99" to compile config files -- not needed after NCL 6.3.0
 sed -e "s/^\(#define CcOptions.*\)$/\1 -std=c99/" -i.backup "${conf_file}"
 
