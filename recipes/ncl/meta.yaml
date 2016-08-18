@@ -1,5 +1,5 @@
 # Jinja variables help maintain the recipe as you'll update the version only here.
-{% set version = "6.3.0" %}
+{% set version = "6.4.0_beta20160818" %}
 
 package:
     name: ncl
@@ -7,9 +7,9 @@ package:
 
 source:
     fn: ncl_ncarg-{{ version }}.tar.gz
-    url: https://www.earthsystemgrid.org/download/fileDownload.html?logicalFileId=bec58cb3-cd9b-11e4-bb80-00c0f03d5b7c
+    url: https://www.ncl.ucar.edu/Download/files/ncl_ncarg-{{ version }}.tar.gz
     # md5 is OK but sha256 is desirable.
-    sha256: 79a01d1c51537426a1a657bb78c8f32453d071c774ec21495800d90d3688b2f3
+    sha256: 9102b09b661670b10a445562816943c0a90d298bf7ddb047ecab7e22627aa41c
 
 build:
     number: 0
