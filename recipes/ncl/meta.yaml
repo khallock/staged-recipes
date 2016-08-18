@@ -28,7 +28,7 @@ requirements:
         - proj.4
         - hdfeos2
         - g2clib
-        - gdal 1.11.4
+        - gdal 2.1.*
         - libiconv
         - hdfeos5
         - curl
@@ -47,7 +47,7 @@ requirements:
         - proj.4
         - hdfeos2
         - g2clib
-        - gdal 1.11.4
+        - gdal 2.1.*
         - libiconv
         - hdfeos5
         - curl
