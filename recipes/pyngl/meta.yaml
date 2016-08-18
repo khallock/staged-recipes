@@ -1,0 +1,74 @@
+# Jinja variables help maintain the recipe as you'll update the version only here.
+{% set version = "1.4.0" %}
+
+package:
+    name: pyngl
+    version: {{ version }}
+
+source:
+    fn: PyNGL-{{ version }}.tar.gz
+    url: https://www.earthsystemgrid.org/download/fileDownload.html?logicalFileId=c59d162c-b960-11e0-a567-00c0f03d5b7c
+    # md5 is OK but sha256 is desirable.
+    sha256: 1651c9a5d506bb8b1b304893a4ed24d5fba7912287398aabf03621431a5320db
+
+build:
+    number: 0
+    skip: True  # [win or linux32]
+
+
+requirements:
+    build:
+        - libpng
+        - jasper
+        - jpeg
+        - zlib
+        - hdf4
+        - hdf5
+        - numpy x.x
+        - gcc
+        - python
+        - libnetcdf 4.4.*
+        - proj.4
+        - hdfeos2
+        - g2clib
+        - gdal 2.1.*
+        - libiconv
+        - hdfeos5
+        - curl
+        - cairo [linux]
+        - udunits2
+        - bzip2
+        - ncl
+        - expat
+    run:
+        - libgcc
+        - libpng
+        - jasper
+        - jpeg
+        - zlib
+        - numpy x.x
+        - python
+        - libnetcdf 4.4.*
+        - hdf4
+        - hdf5
+        - proj.4
+        - hdfeos2
+        - g2clib
+        - gdal 2.1.*
+        - libiconv
+        - hdfeos5
+        - curl
+        - cairo [linux]
+        - udunits2
+        - bzip2
+        - ncl
+        - expat
+
+test:
+  requires:
+    - nose
+  imports:
+    - Ngl
+  commands:
+    - cd $SRC_DIR/src/examples && for file in xy2.py; do echo $file ; nosetests $file ; done | tee pyngl-test.log
+
