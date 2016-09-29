@@ -1,15 +1,13 @@
 # Jinja variables help maintain the recipe as you'll update the version only here.
-{% set version = "6.4.0_beta20160818" %}
+{% set version = "6.4.0_beta20160929" %}
 
 package:
     name: ncl
     version: {{ version }}
 
 source:
-    fn: ncl_ncarg-{{ version }}.tar.gz
-    url: https://www.ncl.ucar.edu/Download/files/ncl_ncarg-{{ version }}.tar.gz
-    # md5 is OK but sha256 is desirable.
-    sha256: 9102b09b661670b10a445562816943c0a90d298bf7ddb047ecab7e22627aa41c
+    git_url: git@github.com:NCAR/ncl.git
+    git_rev: master
 
 build:
     number: 0

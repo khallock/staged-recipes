@@ -25,6 +25,9 @@ mkdir triangle_tmp && cd triangle_tmp && curl -q http://www.netlib.org/voronoi/t
 # add "-std=c99" to compile config files -- not needed after NCL 6.3.0
 sed -e "s/^\(#define CcOptions.*\)$/\1 -std=c99/" -i.backup "${conf_file}"
 
+# edit version string of NCL binary
+sed -e "s/^\(#define Nc.*Version\).*$/\1 ${PKG_VERSION}/" -i.backup config/Project && rm config/Project.backup
+
 echo "/*
  *  This file was created by the Configure script.
  */
