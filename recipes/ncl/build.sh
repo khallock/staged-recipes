@@ -26,7 +26,7 @@ mkdir triangle_tmp && cd triangle_tmp && curl -q http://www.netlib.org/voronoi/t
 sed -e "s/^\(#define CcOptions.*\)$/\1 -std=c99/" -i.backup "${conf_file}"
 
 # edit version string of NCL binary
-sed -e "s/^\(#define Nc.*Version\).*$/\1 ${PKG_VERSION}/" -i.backup config/Project && rm config/Project.backup
+sed -e "s/^\(#define Nc.*Version\).*$/\1 ${PKG_VERSION}/" -e "s/^\(#define       EEMDlib   -lgsl\).*$/\1 -lgslcblas/" -i.backup config/Project && rm config/Project.backup
 
 echo "/*
  *  This file was created by the Configure script.

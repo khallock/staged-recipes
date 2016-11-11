@@ -1,5 +1,6 @@
-# Jinja variables help maintain the recipe as you'll update the version only here.
-{% set version = "6.4.0_beta20160929" %}
+{% set ver = "6.4.0" %}
+{% set beta = "beta20161111" %}
+{% set version = ver + "_" + beta %}
 
 package:
     name: ncl
@@ -11,60 +12,65 @@ source:
 
 build:
     number: 0
-    skip: True  # [win or linux32]
+    skip: True  # [win or py3k]
+    detect_binary_files_with_prefix: true
 
 requirements:
     build:
-        - libpng
-        - jasper
-        - jpeg
-        - zlib
-        - hdf4
-        - hdf5
         - gcc
         - libnetcdf 4.4.*
-        - proj.4
+        - proj.4 4.9.3
+        - gdal 1.11.*
+        - g2clib 1.6.*
         - hdfeos2
-        - g2clib
-        - gdal 2.1.*
-        - libiconv
         - hdfeos5
-        - curl
-        - cairo [linux]
-        - udunits2
-        - bzip2
-    run:
-        - libgcc
-        - libpng
         - jasper
+        - libpng
         - jpeg
         - zlib
-        - libnetcdf 4.4.*
-        - hdf5
         - hdf4
-        - proj.4
-        - hdfeos2
-        - g2clib
-        - gdal 2.1.*
+        - hdf5
         - libiconv
-        - hdfeos5
         - curl
         - cairo [linux]
         - udunits2
         - bzip2
-
+        - gsl
+    run:
+        - libgcc
+        - libnetcdf 4.4.*
+        - hdf4
+        - proj.4 4.9.3
+        - gdal 1.11.*
+        - libuuid [osx]
+        - g2clib 1.6.*
+        - hdfeos2
+        - hdfeos5
+        - jasper
+        - libgfortran
+        - libpng
+        - jpeg
+        - zlib
+        - hdf4
+        - hdf5
+        - libiconv
+        - curl
+        - cairo [linux]
+        - udunits2
+        - bzip2
+        - gsl
 
 test:
     commands:
         - ncl -V
         - NCARG_ROOT=${PREFIX} ${SRC_DIR}/install/make-tarfile/check_files | grep '^<' | grep -v '^< bin/ESMF_RegridWeightGen' && exit 1 || exit 0
 
-
 about:
-    home: http://ncl.ucar.edu
-    # license: MIT
+    home: http://ncl.ucar.edu/
     summary: 'NCAR Command Language'
 
 extra:
     recipe-maintainers:
         - khallock
+        - marylhaley
+        - david-ian-brown
