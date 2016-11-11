@@ -1,15 +1,15 @@
 # Jinja variables help maintain the recipe as you'll update the version only here.
-{% set version = "1.4.0" %}
+{% set ver = "1.5.0" %}
+{% set beta = "beta20161111" %}
+{% set version = ver + "_" + beta %}
 
 package:
     name: pyngl
     version: {{ version }}
 
 source:
-    fn: PyNGL-{{ version }}.tar.gz
-    url: https://www.earthsystemgrid.org/download/fileDownload.html?logicalFileId=c59d162c-b960-11e0-a567-00c0f03d5b7c
-    # md5 is OK but sha256 is desirable.
-    sha256: 1651c9a5d506bb8b1b304893a4ed24d5fba7912287398aabf03621431a5320db
+    git_url: git@github.com:NCAR/pyngl.git
+    git_rev: master
 
 build:
     number: 0
@@ -18,51 +18,53 @@ build:
 
 requirements:
     build:
-        - libpng
+        - gcc
+        - libnetcdf 4.4.*
+        - proj.4 4.9.3
+        - gdal 1.11.*
+        - g2clib 1.6.*
+        - hdfeos2
+        - hdfeos5
         - jasper
+        - libpng
         - jpeg
         - zlib
         - hdf4
         - hdf5
-        - numpy x.x
-        - gcc
-        - python
-        - libnetcdf 4.4.*
-        - proj.4
-        - hdfeos2
-        - g2clib
-        - gdal 2.1.*
         - libiconv
-        - hdfeos5
         - curl
         - cairo [linux]
+        - expat
         - udunits2
         - bzip2
+        - gsl
         - ncl
-        - expat
+        - python 2.*
+        - numpy x.x
     run:
         - libgcc
-        - libpng
+        - libnetcdf 4.4.*
+        - proj.4 4.9.3
+        - gdal 1.11.*
+        - g2clib 1.6.*
+        - hdfeos2
+        - hdfeos5
         - jasper
+        - libpng
         - jpeg
         - zlib
-        - numpy x.x
-        - python
-        - libnetcdf 4.4.*
         - hdf4
         - hdf5
-        - proj.4
-        - hdfeos2
-        - g2clib
-        - gdal 2.1.*
         - libiconv
-        - hdfeos5
         - curl
         - cairo [linux]
+        - expat
         - udunits2
         - bzip2
+        - gsl
         - ncl
-        - expat
+        - python 2.*
+        - numpy x.x
 
 test:
   requires:
