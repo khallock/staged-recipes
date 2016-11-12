@@ -1,6 +1,7 @@
 {% set ver = "6.4.0" %}
 {% set beta = "beta20161111" %}
 {% set version = ver + "_" + beta %}
+{% set commit = "c54cc32b573c14b2e383d30a686745d78521595e" %}
 
 package:
     name: ncl
@@ -8,7 +9,7 @@ package:
 
 source:
     git_url: git@github.com:NCAR/ncl.git
-    git_rev: master
+    git_rev: {{ commit }}
 
 build:
     number: 0
