@@ -2,6 +2,7 @@
 {% set ver = "1.5.0" %}
 {% set beta = "beta20161111" %}
 {% set version = ver + "_" + beta %}
+{% set commit = "38acdc5f41d7d3bb90b8908c15083019e5fd8384" %}
 
 package:
     name: pyngl
@@ -9,7 +10,7 @@ package:
 
 source:
     git_url: git@github.com:NCAR/pyngl.git
-    git_rev: master
+    git_rev: {{ commit }}
 
 build:
     number: 0
