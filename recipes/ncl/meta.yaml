@@ -7,7 +7,7 @@ package:
 source:
     fn: ncl-{{ version }}.tar.gz
     url: https://github.com/NCAR/ncl/archive/{{ version }}.tar.gz
-    sha256: e28bf7d9fcc22cdfde0c7c8f31e3648a4847e7bda9cb69f309f24257eee3dd41
+    sha256: d2cd8a1de1c498c1832f0765113ad58086d1d3b29bf5d2cc9b1ba60f1919951c
 
 build:
     number: 0
